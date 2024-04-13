@@ -5,7 +5,7 @@ import {
   RouterProvider,
 } from 'react-router-dom';
 
-import { LayoutAntd } from './LayoutAntd';
+import { LayoutAntd } from './layout/LayoutAntd';
 import { Error404 } from '../pages/Error404/Error404';
 import { Home } from '../pages/Home/Home';
 import { Diagrams } from '../pages/Diagrams/Diagrams';

@@ -1,5 +1,10 @@
-import React from 'react';
+import { BreadCrumbs } from '../../shared/BreadCrumbs/BreadCrumbs';
 
 export function Home() {
-  return <div>AAAAAAAAAAAAAAAAAAA</div>;
+  return (
+    <div>
+      <BreadCrumbs />
+      gfdsk
+    </div>
+  );
 }

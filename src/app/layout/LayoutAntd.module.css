@@ -1,0 +1,27 @@
+.header{
+  background-color:#ffffff;
+  color: #000;
+  font-weight: 600;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.icon{
+  height: 50px;
+}
+
+.linkIcon{
+  display: flex;
+  align-items: center;
+}
+
+.content{
+  padding: 48px 64px;
+  min-height: 80vh;
+}
+
+.footer{
+  text-align: center;
+}
