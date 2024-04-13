@@ -1,2 +1,2 @@
 # technicalTask
-Technical task
+Техническое задание для компании Бизнес Цифра
