@@ -1,3 +1,9 @@
+import { BreadCrumbs } from '../../shared/BreadCrumbs/BreadCrumbs';
+
 export function Clients() {
-  return <div>gbfgndm</div>;
+  return (
+    <div>
+      <BreadCrumbs names={['Клиенты']} />
+    </div>
+  );
 }
