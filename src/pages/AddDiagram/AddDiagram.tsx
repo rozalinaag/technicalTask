@@ -1,5 +1,5 @@
 import React from 'react';
 
-export function AddChangeClient() {
+export function AddDiagram() {
   return <div></div>;
 }
