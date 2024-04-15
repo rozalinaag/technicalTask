@@ -1,0 +1,9 @@
+.card{
+  width: 300px;
+  color: gray;
+}
+
+.menu{
+  display: flex;
+  gap: 20px;
+}
