@@ -3,14 +3,14 @@ import { getClients } from "../entities/clients/api/getClients";
 import { Client } from "../entities/clients";
 
 class ClientsStore {
-  posts?: Client[];
+  clients?: Client[];
 
   constructor() {
     makeAutoObservable(this)
   }
 
-  getPostsAction = () => {
-    this.posts = getClients();
+  getClientsAction = () => {
+    this.clients = getClients();
   }
 }
 

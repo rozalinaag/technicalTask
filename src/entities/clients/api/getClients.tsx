@@ -1,18 +1,6 @@
 import { Client } from '../index';
+import { initialDataClients } from './initialDataClients';
 
 export function getClients(): Client[] {
-  return [
-    {
-      name: 'dds',
-      lastName: 'ss',
-    },
-    {
-      name: 'dds',
-      lastName: 'ss',
-    },
-    {
-      name: 'dds',
-      lastName: 'ss',
-    },
-  ];
+  return initialDataClients;
 }
