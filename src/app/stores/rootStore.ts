@@ -1,4 +1,4 @@
-import clientsStore from './clientsStore'
+import clientsStore from '../../entities/clients/model/clientsStore'
 
 class RootStore {
   clients = clientsStore

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import css from './BreadCrumbs.module.css';
 
 type Props = {
-  names?: string[];
+  names?: React.ReactNode[];
 };
 
 export function BreadCrumbs({ names }: Props) {

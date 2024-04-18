@@ -1,6 +1,8 @@
 import { Client } from '../index';
-import { initialDataClients } from './initialDataClients';
+import { initialDataClients } from '../model/initialDataClients';
 
 export function getClients(): Client[] {
-  return initialDataClients;
+  return localStorage.clients
+    ? JSON.parse(localStorage.clients)
+    : initialDataClients;
 }

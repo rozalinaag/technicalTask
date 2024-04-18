@@ -1,4 +1,4 @@
-import { BreadCrumbs } from '../../shared/ui/BreadCrumbs/BreadCrumbs';
+import { BreadCrumbs } from '../../shared/ui';
 
 export function Diagrams() {
   return (

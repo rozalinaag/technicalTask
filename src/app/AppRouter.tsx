@@ -20,12 +20,14 @@ export const AppRouter = () => {
     <Route path="/" element={<LayoutAntd />} errorElement={<Error404 />}>
       <Route index element={<Home />} />
 
-      <Route path="diagrams" element={<Diagrams />}>
+      <Route path="diagrams">
+        <Route index element={<Diagrams />} />
         <Route path="addDiagram" element={<AddDiagram />} />
         <Route path="changeDiagram" element={<ChangeDiagram />} />
       </Route>
 
-      <Route path="clients" element={<Clients />}>
+      <Route path="clients">
+        <Route index element={<Clients />} />
         <Route path="changeClient" element={<ChangeClient />} />
         <Route path="addClient" element={<AddClient />} />
       </Route>

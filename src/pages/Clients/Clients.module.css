@@ -1,4 +1,37 @@
-.button{
-  width: 100px;
-  background-color: red;
+.wrapper{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 54px;
+}
+
+.addButton{
+  background-color: rgb(31, 79, 224);
+  color: white;
+  padding: 10px;
+  height: 40px;
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+}
+
+.deletedBlock{
+  background-color: white;
+  border-radius: 5px;
+  padding: 20px;
+  width: 100%;
+
+  display: flex;
+  gap: 44px;
+  align-items: center;
+}
+
+.count{
+  margin-left: 5px;
+}
+
+.table{
+  padding-top: 50px;
 }
