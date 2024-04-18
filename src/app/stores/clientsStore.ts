@@ -1,6 +1,6 @@
 import { makeAutoObservable } from "mobx";
-import { getClients } from "../entities/clients/api/getClients";
-import { Client } from "../entities/clients";
+import { getClients } from "../../entities/clients/api/getClients";
+import { Client } from "../../entities/clients";
 
 class ClientsStore {
   clients?: Client[];

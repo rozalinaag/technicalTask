@@ -1,5 +1,5 @@
 import { Card } from 'antd';
-import { BreadCrumbs } from '../../shared/BreadCrumbs/BreadCrumbs';
+import { BreadCrumbs } from '../../shared/ui/BreadCrumbs/BreadCrumbs';
 import css from './Home.module.css';
 import { Link } from 'react-router-dom';
 

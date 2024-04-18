@@ -1,10 +1,12 @@
 import { observer } from 'mobx-react-lite';
-import { BreadCrumbs } from '../../shared/BreadCrumbs/BreadCrumbs';
-import clientsStore from '../../stores/posts-store';
+import { BreadCrumbs } from '../../shared/ui/BreadCrumbs/BreadCrumbs';
 import { useEffect } from 'react';
+import { useStores } from '../../shared/hooks/useStores';
 
 export const Clients = observer(() => {
-  const { clients, getClientsAction } = clientsStore;
+  const {
+    clients: { clients, getClientsAction },
+  } = useStores();
 
   useEffect(() => {
     if (!clients?.length) {
