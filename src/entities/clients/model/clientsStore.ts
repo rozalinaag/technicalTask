@@ -16,7 +16,7 @@ class ClientsStore {
   }
 
   pushNewClientAction = (newClient: Client) => {
-    const newData = [...this.clients, newClient]
+    const  newData = [...this.clients.filter(item => item.key !== newClient.key), newClient]
     this.clients = newData;
     localStorage.setItem('clients', JSON.stringify(newData));
   }

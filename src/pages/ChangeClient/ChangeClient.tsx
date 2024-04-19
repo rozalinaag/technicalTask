@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { FormClient } from '../../entities/clients/ui/FormClient/FormClient';
 import { BreadCrumbs } from '../../shared/ui';
 import css from './ChangeClient.module.css';
@@ -8,8 +8,9 @@ export function ChangeClient() {
   const {
     clients: { clients, pushNewClientAction },
   } = useStores();
+  const { key } = useParams();
 
-  console.log('re');
+  console.log(clients);
 
   return (
     <div className={css.wrapper}>
@@ -17,7 +18,10 @@ export function ChangeClient() {
         names={[<Link to="/clients">Клиенты</Link>, 'Изменение данных клиента']}
       />
 
-      <FormClient pushNewClientAction={pushNewClientAction} />
+      <FormClient
+        client={clients.find((item) => item.key === key)}
+        pushNewClientAction={pushNewClientAction}
+      />
     </div>
   );
 }

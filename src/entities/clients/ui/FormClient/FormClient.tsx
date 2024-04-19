@@ -28,6 +28,12 @@ export function FormClient({ client, pushNewClientAction }: Props) {
   } = useForm<Client>({
     defaultValues: {
       key: client?.key || uuIdv4(),
+      name: client?.name,
+      lastName: client?.lastName,
+      middleName: client?.middleName,
+      phone: client?.phone,
+      email: client?.email,
+      adress: client?.adress,
     },
     resolver: zodResolver(zClient),
   });
@@ -37,6 +43,8 @@ export function FormClient({ client, pushNewClientAction }: Props) {
     reset();
     navigate('/clients');
   };
+
+  console.log(client);
 
   const error: SubmitErrorHandler<Client> = (data) => {
     console.log(data);
