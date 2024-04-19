@@ -1,0 +1,16 @@
+.field{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+  .subTitle{
+    width: 100px;
+  }
+
+  .required::before{
+    content: '*';
+    color: red;
+    padding-right: 3px;
+  }
+}
