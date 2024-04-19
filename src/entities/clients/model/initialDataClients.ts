@@ -13,7 +13,7 @@ export const initialDataClients = [
   },
   {
     key: 3,
-    name: 'Адриан',
+    name: 2,
     lastName: 'Ситников',
     middleName: 'Дамирович',
   },

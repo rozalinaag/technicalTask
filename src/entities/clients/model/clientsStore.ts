@@ -3,7 +3,7 @@ import { Client, deleteClients } from "..";
 import { initialDataClients } from "./initialDataClients";
 
 class ClientsStore {
-  clients: Client[] =  localStorage.clients? JSON.parse( localStorage.clients ) : initialDataClients;
+  clients: Client[] = localStorage.clients? JSON.parse( localStorage.clients ) : initialDataClients;
   
   constructor() {
     localStorage.setItem('clients', JSON.stringify(this.clients));

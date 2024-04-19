@@ -1,5 +1,5 @@
 import { observer } from 'mobx-react-lite';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { BreadCrumbs } from '../../shared/ui';
 import { useStores } from '../../shared/hooks/useStores';
 import { Link } from 'react-router-dom';
@@ -44,7 +44,7 @@ export const Clients = observer(() => {
         </div>
 
         <Link to="addClient" className={css.addButton}>
-          Добавить
+          Добавить клиента
         </Link>
       </div>
 
