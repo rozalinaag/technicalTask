@@ -14,3 +14,8 @@
     padding-right: 3px;
   }
 }
+
+.error{
+  color: red;
+  margin-left: 102px;
+}

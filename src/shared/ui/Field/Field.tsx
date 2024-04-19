@@ -5,15 +5,20 @@ type Props = {
   children: React.ReactNode;
   title: string;
   required?: boolean;
+  error?: string;
 };
 
-export function Field({ children, title, required = true }: Props) {
+export function Field({ children, title, error, required = true }: Props) {
   return (
-    <div className={css.field}>
-      <div className={classNames(css.subTitle, required && css.required)}>
-        {title}:
+    <div>
+      <div className={css.field}>
+        <div className={classNames(css.subTitle, required && css.required)}>
+          {title}:
+        </div>
+        {children}
       </div>
-      {children}
+
+      <div className={css.error}>{error}</div>
     </div>
   );
 }

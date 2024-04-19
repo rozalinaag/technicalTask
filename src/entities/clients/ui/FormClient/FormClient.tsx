@@ -8,7 +8,8 @@ import {
 } from 'react-hook-form';
 import classNames from 'classnames';
 import { Field } from '../../../../shared/ui';
-import type { Client } from '../..';
+import { zClient, type Client } from '../..';
+import { zodResolver } from '@hookform/resolvers/zod';
 
 export function FormClient() {
   const {
@@ -19,7 +20,9 @@ export function FormClient() {
   } = useForm<Client>({
     defaultValues: {
       middleName: '',
+      key: 10,
     },
+    resolver: zodResolver(zClient),
   });
 
   const submit: SubmitHandler<Client> = (data) => {
@@ -35,51 +38,92 @@ export function FormClient() {
       <form className={css.form} onSubmit={handleSubmit(submit, error)}>
         <div className={css.title}>Добавление клиента</div>
 
-        <Field title="Фамилия">
+        <Field title="Фамилия" error={errors.name?.message}>
           <Controller
             control={control}
+            rules={{ required: true }}
             name="lastName"
-            render={({ field }) => <Input type="text" {...field} />}
+            render={({ field }) => (
+              <Input
+                type="text"
+                {...field}
+                status={errors.lastName ? 'error' : ''}
+              />
+            )}
           />
         </Field>
 
-        <Field title="Имя">
+        <Field title="Имя" error={errors.name?.message}>
           <Controller
             control={control}
+            rules={{ required: true }}
             name="name"
-            render={({ field }) => <Input type="text" {...field} />}
+            render={({ field }) => (
+              <Input
+                status={errors.name ? 'error' : ''}
+                type="text"
+                {...field}
+              />
+            )}
           />
         </Field>
 
-        <Field title="Отчество">
+        <Field title="Отчество" error={errors.name?.message}>
           <Controller
             control={control}
+            rules={{ required: true }}
             name="middleName"
-            render={({ field }) => <Input type="text" {...field} />}
+            render={({ field }) => (
+              <Input
+                status={errors.middleName ? 'error' : ''}
+                type="text"
+                {...field}
+              />
+            )}
           />
         </Field>
 
-        <Field title="Телефон">
+        <Field title="Телефон" error={errors.name?.message}>
           <Controller
             control={control}
+            rules={{ required: true }}
             name="phone"
-            render={({ field }) => <Input type="text" {...field} />}
+            render={({ field }) => (
+              <Input
+                status={errors.phone ? 'error' : ''}
+                type="text"
+                {...field}
+              />
+            )}
           />
         </Field>
 
-        <Field title="Эл. почта">
+        <Field title="Эл. почта" error={errors.name?.message}>
           <Controller
             control={control}
+            rules={{ required: true }}
             name="email"
-            render={({ field }) => <Input type="text" {...field} />}
+            render={({ field }) => (
+              <Input
+                status={errors.email ? 'error' : ''}
+                type="text"
+                {...field}
+              />
+            )}
           />
         </Field>
 
-        <Field title="Адрес" required={false}>
+        <Field title="Адрес" required={false} error={errors.name?.message}>
           <Controller
             control={control}
             name="adress"
-            render={({ field }) => <Input type="text" {...field} />}
+            render={({ field }) => (
+              <Input
+                status={errors.adress ? 'error' : ''}
+                type="text"
+                {...field}
+              />
+            )}
           />
         </Field>
 
@@ -87,10 +131,13 @@ export function FormClient() {
           <button type="submit" className="button">
             Отправить
           </button>
+
           <button
             type="reset"
             className={classNames('button', css.reset)}
-            onClick={() => reset()}
+            onClick={() => {
+              reset();
+            }}
           >
             Сбросить
           </button>
