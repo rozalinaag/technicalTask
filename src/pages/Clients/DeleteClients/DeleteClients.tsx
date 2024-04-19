@@ -11,6 +11,7 @@ export function DeleteClients({ selected }: Props) {
   const {
     clients: { deleteClientsAction },
   } = useStores();
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [deleteClients, setDeleteClients] = useState(false);
   const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
@@ -19,6 +20,7 @@ export function DeleteClients({ selected }: Props) {
     if (deleteClients) {
       deleteClientsAction(selected);
       setDeleteClients(false);
+      setIsSuccessModalOpen(true);
     }
   }, [deleteClients]);
 
@@ -45,6 +47,7 @@ export function DeleteClients({ selected }: Props) {
         title="Удаление клиентов"
         open={isModalOpen}
         cancelText={'Отмена'}
+        centered
         okText={'Ок'}
         onOk={() => {
           setIsModalOpen(false);
@@ -60,6 +63,8 @@ export function DeleteClients({ selected }: Props) {
       <Modal
         title="Успешно удалено!"
         open={isSuccessModalOpen}
+        cancelButtonProps={{ style: { display: 'none' } }}
+        centered
         okText={'Ок'}
         onOk={() => {
           setIsSuccessModalOpen(false);

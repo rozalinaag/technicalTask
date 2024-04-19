@@ -84,10 +84,12 @@ export function FormClient() {
         </Field>
 
         <div className={css.buttons}>
-          <button type="submit">Отправить</button>
+          <button type="submit" className="button">
+            Отправить
+          </button>
           <button
             type="reset"
-            className={classNames(css.reset)}
+            className={classNames('button', css.reset)}
             onClick={() => reset()}
           >
             Сбросить
