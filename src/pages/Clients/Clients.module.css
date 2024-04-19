@@ -7,4 +7,9 @@
 
 .table{
   padding-top: 50px;
+
+  :global(.ant-table-row):hover{
+    cursor: pointer;
+    color: #1677ff;
+  }
 }

@@ -28,7 +28,7 @@ export const AppRouter = () => {
 
       <Route path="clients">
         <Route index element={<Clients />} />
-        <Route path="changeClient" element={<ChangeClient />} />
+        <Route path="changeClient/:key" element={<ChangeClient />} />
         <Route path="addClient" element={<AddClient />} />
       </Route>
 

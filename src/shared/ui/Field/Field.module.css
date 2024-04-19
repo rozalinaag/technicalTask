@@ -18,4 +18,5 @@
 .error{
   color: red;
   margin-left: 102px;
+  position: absolute;
 }
