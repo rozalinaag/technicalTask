@@ -10,8 +10,16 @@ import classNames from 'classnames';
 import { Field } from '../../../../shared/ui';
 import { zClient, type Client } from '../..';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { v4 as uuIdv4 } from 'uuid';
+import { useNavigate } from 'react-router-dom';
 
-export function FormClient() {
+type Props = {
+  client?: Client;
+  pushNewClientAction: (newClient: Client) => void;
+};
+
+export function FormClient({ client, pushNewClientAction }: Props) {
+  const navigate = useNavigate();
   const {
     handleSubmit,
     formState: { errors },
@@ -19,14 +27,15 @@ export function FormClient() {
     control,
   } = useForm<Client>({
     defaultValues: {
-      middleName: '',
-      key: 10,
+      key: client?.key || uuIdv4(),
     },
     resolver: zodResolver(zClient),
   });
 
   const submit: SubmitHandler<Client> = (data) => {
-    console.log(data);
+    pushNewClientAction(data);
+    reset();
+    navigate('/clients');
   };
 
   const error: SubmitErrorHandler<Client> = (data) => {
@@ -38,7 +47,7 @@ export function FormClient() {
       <form className={css.form} onSubmit={handleSubmit(submit, error)}>
         <div className={css.title}>Добавление клиента</div>
 
-        <Field title="Фамилия" error={errors.name?.message}>
+        <Field title="Фамилия" error={errors.lastName?.message}>
           <Controller
             control={control}
             rules={{ required: true }}
@@ -68,7 +77,7 @@ export function FormClient() {
           />
         </Field>
 
-        <Field title="Отчество" error={errors.name?.message}>
+        <Field title="Отчество" error={errors.middleName?.message}>
           <Controller
             control={control}
             rules={{ required: true }}
@@ -83,7 +92,7 @@ export function FormClient() {
           />
         </Field>
 
-        <Field title="Телефон" error={errors.name?.message}>
+        <Field title="Телефон" error={errors.phone?.message}>
           <Controller
             control={control}
             rules={{ required: true }}
@@ -98,7 +107,7 @@ export function FormClient() {
           />
         </Field>
 
-        <Field title="Эл. почта" error={errors.name?.message}>
+        <Field title="Эл. почта" error={errors.email?.message}>
           <Controller
             control={control}
             rules={{ required: true }}
@@ -113,7 +122,7 @@ export function FormClient() {
           />
         </Field>
 
-        <Field title="Адрес" required={false} error={errors.name?.message}>
+        <Field title="Адрес" required={false} error={errors.adress?.message}>
           <Controller
             control={control}
             name="adress"

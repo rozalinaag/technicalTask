@@ -6,7 +6,7 @@ const errorNames = {
 };
 
 export const zClient = z.object({
-  key: z.number(),
+  key: z.string(),
   name: z
     .string(errorNames)
     .min(1, { message: 'Имя должно содержать хотя бы 1 символ' })
@@ -16,14 +16,14 @@ export const zClient = z.object({
     .min(1, { message: 'Фамилия должна содержать хотя бы 1 символ' })
     .max(250, { message: 'Максимальное количество символов 250' }),
   middleName: z.string(errorNames),
-  phone: z.string(errorNames).min(5).max(20),
+  phone: z.string(errorNames).regex(new RegExp('^8[0-9]{10}$'), {message: 'Формат телефона 8ХХХХХХХХХХ'}),
   email: z
     .string({
       required_error: 'Обязательно для заполнения',
       invalid_type_error: 'Неправильно указана почта',
     })
     .email(),
-  adress: z.string() || z.null(),
+  adress: z.union([z.string(), z.undefined()]),
 });
 
 export type Client = z.infer<typeof zClient>;

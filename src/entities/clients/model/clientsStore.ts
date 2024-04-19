@@ -14,6 +14,12 @@ class ClientsStore {
     this.clients = deleteClients(keys, this.clients);
     localStorage.setItem('clients', JSON.stringify(this.clients));
   }
+
+  pushNewClientAction = (newClient: Client) => {
+    const newData = [...this.clients, newClient]
+    this.clients = newData;
+    localStorage.setItem('clients', JSON.stringify(newData));
+  }
 }
 
 export default new ClientsStore();
