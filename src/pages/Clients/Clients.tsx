@@ -10,18 +10,16 @@ import { Key } from 'antd/es/table/interface';
 
 export const Clients = observer(() => {
   const {
-    clients: { clients, getClientsAction },
+    clients: { clients, deleteClientsAction },
   } = useStores();
   const [countSelected, setCountSelected] = useState<Key[]>([]);
 
-  useEffect(() => {
-    if (!clients?.length) {
-      getClientsAction();
-    }
-  }, []);
-
   const onChangeTable = (selectedRowKeys: React.Key[]) => {
     setCountSelected(selectedRowKeys);
+  };
+
+  const handleDeleteClients = () => {
+    deleteClientsAction(countSelected);
   };
 
   return (
@@ -35,7 +33,12 @@ export const Clients = observer(() => {
             <span className={css.count}>{countSelected.length}</span>
           </div>
 
-          <Button type="primary" danger disabled={!countSelected.length}>
+          <Button
+            type="primary"
+            danger
+            disabled={!countSelected.length}
+            onClick={handleDeleteClients}
+          >
             Удалить
           </Button>
         </div>

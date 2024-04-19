@@ -1,6 +1,5 @@
 import { makeAutoObservable } from "mobx";
-import { getClients } from "../api/getClients";
-import { Client } from "..";
+import { Client, deleteClients } from "..";
 import { initialDataClients } from "./initialDataClients";
 
 class ClientsStore {
@@ -11,8 +10,9 @@ class ClientsStore {
     makeAutoObservable(this)
   }
 
-  getClientsAction = () => {
-    this.clients = getClients();
+  deleteClientsAction = (keys: React.Key[]) => {
+    this.clients = deleteClients(keys, this.clients);
+    localStorage.setItem('clients', JSON.stringify(this.clients));
   }
 }
 

@@ -7,8 +7,8 @@ export const initialDataClients = [
   },
   {
     key: 2,
-    name: 'Соломон',
-    lastName: 'Никитин',
+    name: 'Дмитрий',
+    lastName: 'Орджоникидзе',
     middleName: 'Станиславович',
   },
   {
@@ -25,8 +25,8 @@ export const initialDataClients = [
   },
   {
     key: 5,
-    name: 'Соломон',
-    lastName: 'Никитин',
-    middleName: 'Станиславович',
+    name: 'Анна',
+    lastName: 'Кремова',
+    middleName: 'Сергеевна',
   }
 ]
