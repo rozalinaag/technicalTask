@@ -1,25 +1,26 @@
 import { observer } from 'mobx-react-lite';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { BreadCrumbs } from '../../shared/ui';
 import { useStores } from '../../shared/hooks/useStores';
 import { Link } from 'react-router-dom';
-import { Button, Table } from 'antd';
+import { Table } from 'antd';
 import css from './Clients.module.css';
 import { columns } from './colums';
 import { Key } from 'antd/es/table/interface';
+import { DeleteClients } from './DeleteClients/DeleteClients';
 
 export const Clients = observer(() => {
   const {
-    clients: { clients, deleteClientsAction },
+    clients: { clients },
   } = useStores();
-  const [countSelected, setCountSelected] = useState<Key[]>([]);
+  const [selected, setSelected] = useState<Key[]>([]);
+
+  useEffect(() => {
+    setSelected([]);
+  }, [clients]);
 
   const onChangeTable = (selectedRowKeys: React.Key[]) => {
-    setCountSelected(selectedRowKeys);
-  };
-
-  const handleDeleteClients = () => {
-    deleteClientsAction(countSelected);
+    setSelected(selectedRowKeys);
   };
 
   return (
@@ -27,21 +28,7 @@ export const Clients = observer(() => {
       <BreadCrumbs names={['Клиенты']} />
 
       <div className={css.wrapper}>
-        <div className={css.deletedBlock}>
-          <div>
-            Выбранных элементов:{' '}
-            <span className={css.count}>{countSelected.length}</span>
-          </div>
-
-          <Button
-            type="primary"
-            danger
-            disabled={!countSelected.length}
-            onClick={handleDeleteClients}
-          >
-            Удалить
-          </Button>
-        </div>
+        <DeleteClients selected={selected} />
 
         <Link to="addClient" className="button">
           Добавить клиента

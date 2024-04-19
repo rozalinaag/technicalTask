@@ -64,7 +64,7 @@ table {
   border-spacing: 0;
 }
 
-button, .button{
+.button{
   background-color: rgb(31, 79, 224);
   color: white;
   padding: 12px;
