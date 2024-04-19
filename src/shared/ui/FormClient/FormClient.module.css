@@ -1,0 +1,39 @@
+.wrapper {
+  .reset {
+    background-color: rgb(254, 254, 254);
+    border: 1px solid #d9d9d9;
+    color: black;
+
+    &:hover {
+      background-color: rgb(240, 240, 240);
+      color: black;
+    }
+
+    &:active {
+      background-color: rgb(230, 229, 229);
+      color: black;
+    }
+  }
+}
+
+.title{
+  font-weight: 600;
+  font-size: 18px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #d9d9d9bc;
+  margin-bottom: 20px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  gap: 15px;
+  padding: 20px;
+}
+
+.buttons{
+  display: flex;
+  gap: 10px;
+  justify-content: end;
+}

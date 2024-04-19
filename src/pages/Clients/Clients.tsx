@@ -43,7 +43,7 @@ export const Clients = observer(() => {
           </Button>
         </div>
 
-        <Link to="addClient" className={css.addButton}>
+        <Link to="addClient" className="button">
           Добавить клиента
         </Link>
       </div>
