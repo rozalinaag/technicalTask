@@ -44,8 +44,6 @@ export function FormClient({ client, pushNewClientAction }: Props) {
     navigate('/clients');
   };
 
-  console.log(client);
-
   const error: SubmitErrorHandler<Client> = (data) => {
     console.log(data);
   };
@@ -53,7 +51,9 @@ export function FormClient({ client, pushNewClientAction }: Props) {
   return (
     <div className={css.wrapper}>
       <form className={css.form} onSubmit={handleSubmit(submit, error)}>
-        <div className={css.title}>Добавление клиента</div>
+        <div className={css.title}>
+          {client ? 'Изменение данных клиента' : 'Добавление клиента'}
+        </div>
 
         <Field title="Фамилия" error={errors.lastName?.message}>
           <Controller
@@ -149,15 +149,17 @@ export function FormClient({ client, pushNewClientAction }: Props) {
             Отправить
           </button>
 
-          <button
-            type="reset"
-            className={classNames('button', css.reset)}
-            onClick={() => {
-              reset();
-            }}
-          >
-            Сбросить
-          </button>
+          {!client && (
+            <button
+              type="reset"
+              className={classNames('button', css.reset)}
+              onClick={() => {
+                reset();
+              }}
+            >
+              Сбросить
+            </button>
+          )}
         </div>
       </form>
     </div>

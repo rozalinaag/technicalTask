@@ -38,7 +38,7 @@ export const Clients = observer(() => {
       </div>
 
       <Table
-        className={css.table}
+        className="table"
         rowSelection={{
           type: 'checkbox',
           onChange: onChangeTable,

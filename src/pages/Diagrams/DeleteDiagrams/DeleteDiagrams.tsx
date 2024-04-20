@@ -1,7 +1,6 @@
-import { Button, Modal } from 'antd';
-import css from './DeleteClients.module.css';
-import { useStores } from '../../../shared/hooks/useStores';
 import { useEffect, useState } from 'react';
+import { useStores } from '../../../shared/hooks/useStores';
+import css from './DeleteDiagrams.module.css';
 import {
   DeleteBlock,
   ModalSuccessDelete,
@@ -12,7 +11,7 @@ type Props = {
   selected: React.Key[];
 };
 
-export function DeleteClients({ selected }: Props) {
+export function DeleteDiagrams({ selected }: Props) {
   const {
     clients: { deleteClientsAction },
   } = useStores();

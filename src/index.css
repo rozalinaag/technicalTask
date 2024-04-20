@@ -82,3 +82,12 @@ table {
     background-color: rgb(32, 72, 194);
   }
 }
+
+.table{
+  padding-top: 50px;
+
+  .ant-table-row:hover{
+    cursor: pointer;
+    color: #1677ff;
+  }
+}
