@@ -1,9 +1,9 @@
 import { makeAutoObservable } from "mobx";
 import { Diagram, deleteDiagrams } from "..";
-import { initialData } from "./initialData";
+import { initialDiagrams } from "./initialDiagrams";
 
 class DiagramsStore {
-  diagrams: Diagram[] = localStorage.diagrams? JSON.parse( localStorage.diagrams ) : initialData;
+  diagrams: Diagram[] = localStorage.diagrams? JSON.parse( localStorage.diagrams ) : initialDiagrams;
   
   constructor() {
     localStorage.setItem('diagrams', JSON.stringify(this.diagrams));

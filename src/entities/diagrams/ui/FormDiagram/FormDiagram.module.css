@@ -1,29 +1,33 @@
-.field{
+.field {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 10px;
+  margin-bottom: 5px;
 
-  .subTitle{
+  .subTitle {
     white-space: nowrap;
   }
 
-  .required::before{
+  .required::before {
     content: '*';
     color: red;
     padding-right: 3px;
   }
 }
 
-.error{
+.error {
   color: red;
-  margin-left: 160px;
+  top: 35px;
+  left: 162px;
   position: absolute;
 }
 
-.edit{
+.edit {
   height: 60vh;
-  background-color: rgb(191, 176, 176);
+  border: 1px solid var(--additional-color);
+  border-radius: 10px;
 }
 
 .form {

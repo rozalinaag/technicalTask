@@ -2,15 +2,11 @@ import classNames from 'classnames';
 import css from './FormDiagram.module.css';
 import { Diagram, zDiagrams } from '../../model/types';
 import { useNavigate } from 'react-router-dom';
-import {
-  Controller,
-  SubmitErrorHandler,
-  SubmitHandler,
-  useForm,
-} from 'react-hook-form';
+import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import { v4 as uuIdv4 } from 'uuid';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Input } from 'antd';
+import { FlowDiagram } from '../FlowDiagram/FlowDiagram';
 
 type Props = {
   diagram?: Diagram;
@@ -38,13 +34,9 @@ export function FormDiagram({ diagram, pushNewDiagramAction }: Props) {
     navigate('/diagrams');
   };
 
-  const error: SubmitErrorHandler<Diagram> = (data) => {
-    console.log(data);
-  };
-
   return (
     <div className={css.wrapper}>
-      <form className={css.form} onSubmit={handleSubmit(submit, error)}>
+      <form className={css.form} onSubmit={handleSubmit(submit)}>
         <div className={css.field}>
           <div className={classNames(css.subTitle, css.required)}>
             Название диаграммы:
@@ -62,10 +54,15 @@ export function FormDiagram({ diagram, pushNewDiagramAction }: Props) {
               />
             )}
           />
+          <div className={css.error}>{errors.name?.message}</div>
         </div>
-        <div className={css.error}>{errors.name?.message}</div>
 
-        <div className={css.edit}>Reductor</div>
+        <div className={css.edit}>
+          <FlowDiagram
+            nodesDiagram={diagram?.nodes}
+            edgesDiagram={diagram?.edges}
+          />
+        </div>
 
         <div className={css.buttons}>
           <button type="submit" className="button">

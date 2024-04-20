@@ -11,6 +11,26 @@ export const zDiagrams = z.object({
     .string(errorNames)
     .min(1, { message: 'Имя должно содержать хотя бы 1 символ' })
     .max(250, { message: 'Максимальное количество символов 250' }),
+  nodes: z.array(
+    z.object({
+      id: z.string(),
+      position: z.object({
+        x: z.number(),
+        y: z.number(),
+      }),
+      type: z.string(),
+      data: z.object({
+        label: z.string(),
+      }),
+    })
+  ),
+  edges: z.array(
+    z.object({
+      id: z.string(),
+      source: z.string(),
+      target: z.string(),
+    })
+  ),
 });
 
 export type Diagram = z.infer<typeof zDiagrams>;
