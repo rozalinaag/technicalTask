@@ -1,4 +1,6 @@
 import { Modal } from 'antd';
+import cat from './cat.png';
+import css from './ModalYouSureDelete.module.css';
 
 type Props = {
   isModalOpen: boolean;
@@ -26,7 +28,10 @@ export function ModalYouSureDelete({
         setIsModalOpen(false);
       }}
     >
-      Вы уверены, что хотите удалить?
+      <div className={css.content}>
+        Вы уверены, что хотите удалить?
+        <img className={css.pic} src={cat} alt="cat" />
+      </div>
     </Modal>
   );
 }

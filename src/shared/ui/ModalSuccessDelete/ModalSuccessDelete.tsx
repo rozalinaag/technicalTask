@@ -1,4 +1,6 @@
 import { Modal } from 'antd';
+import arrow from './arrow.png';
+import css from './ModalSuccessDelete.module.css';
 
 type Props = {
   isSuccessModalOpen: boolean;
@@ -20,7 +22,9 @@ export function ModalSuccessDelete({
         setIsSuccessModalOpen(false);
       }}
     >
-      Успешно удалено!
+      <div className={css.modal}>
+        <img className={css.picture} src={arrow} alt="arrow" />
+      </div>
     </Modal>
   );
 }

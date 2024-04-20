@@ -1,0 +1,9 @@
+.modal{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.picture{
+  width: 70px;
+}

@@ -1,0 +1,10 @@
+.pic{
+  width: 150px;
+  display: block;
+}
+
+.content{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
