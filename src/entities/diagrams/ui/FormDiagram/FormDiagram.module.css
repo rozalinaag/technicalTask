@@ -17,6 +17,27 @@
 
 .error{
   color: red;
-  margin-left: 102px;
+  margin-left: 160px;
   position: absolute;
+}
+
+.edit{
+  height: 60vh;
+  background-color: rgb(191, 176, 176);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  gap: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: rgba(198, 202, 207, 0.116) 0px 4px 18px;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: end;
 }

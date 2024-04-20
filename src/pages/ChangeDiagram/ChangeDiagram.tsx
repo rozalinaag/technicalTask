@@ -2,6 +2,7 @@ import { Link, useParams } from 'react-router-dom';
 import { BreadCrumbs } from '../../shared/ui';
 import { useStores } from '../../shared/hooks/useStores';
 import css from './ChangeDiagram.module.css';
+import { FormDiagram } from '../../entities/diagrams';
 
 export function ChangeDiagram() {
   const {
@@ -17,7 +18,10 @@ export function ChangeDiagram() {
         names={[<Link to="/diagrams">Диаграммы</Link>, 'Изменение диаграммы']}
       />
 
-      <div className={css.title}>{changedDiagram?.name}</div>
+      <FormDiagram
+        diagram={changedDiagram}
+        pushNewDiagramAction={pushNewDiagramAction}
+      />
     </div>
   );
 }
