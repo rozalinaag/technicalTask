@@ -21,7 +21,6 @@ export const Clients = observer(() => {
   }, [clients]);
 
   const onChangeTable = (selectedRowKeys: React.Key[]) => {
-    console.log('fpfpf');
     setSelected(selectedRowKeys);
   };
 

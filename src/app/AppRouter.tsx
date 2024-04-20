@@ -22,8 +22,8 @@ export const AppRouter = () => {
 
       <Route path="diagrams">
         <Route index element={<Diagrams />} />
+        <Route path="changeDiagram/:key" element={<ChangeDiagram />} />
         <Route path="addDiagram" element={<AddDiagram />} />
-        <Route path="changeDiagram" element={<ChangeDiagram />} />
       </Route>
 
       <Route path="clients">

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { BreadCrumbs } from '../../shared/ui';
-import { FormClient } from '../../entities/clients/ui/FormClient/FormClient';
+import { FormClient } from '../../entities/clients';
 import css from './AddClient.module.css';
 import { useStores } from '../../shared/hooks/useStores';
 

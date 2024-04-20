@@ -1,5 +1,5 @@
 import { Link, useParams } from 'react-router-dom';
-import { FormClient } from '../../entities/clients/ui/FormClient/FormClient';
+import { FormClient } from '../../entities/clients';
 import { BreadCrumbs } from '../../shared/ui';
 import css from './ChangeClient.module.css';
 import { useStores } from '../../shared/hooks/useStores';
@@ -9,8 +9,6 @@ export function ChangeClient() {
     clients: { clients, pushNewClientAction },
   } = useStores();
   const { key } = useParams();
-
-  console.log(clients);
 
   return (
     <div className={css.wrapper}>

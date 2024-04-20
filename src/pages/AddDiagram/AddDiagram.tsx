@@ -1,5 +1,15 @@
-import React from 'react';
+import { Link } from 'react-router-dom';
+import { BreadCrumbs } from '../../shared/ui';
+import { FormDiagram } from '../../entities/diagrams';
 
 export function AddDiagram() {
-  return <div></div>;
+  return (
+    <div>
+      <BreadCrumbs
+        names={[<Link to="/diagrams">Диаграммы</Link>, 'Создание диаграммы']}
+      />
+
+      <FormDiagram />
+    </div>
+  );
 }

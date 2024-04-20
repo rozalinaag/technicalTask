@@ -1,0 +1,22 @@
+.field{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+  .subTitle{
+    white-space: nowrap;
+  }
+
+  .required::before{
+    content: '*';
+    color: red;
+    padding-right: 3px;
+  }
+}
+
+.error{
+  color: red;
+  margin-left: 102px;
+  position: absolute;
+}

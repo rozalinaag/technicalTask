@@ -1,7 +1,7 @@
 import { TableColumnsType } from "antd";
-import { Client } from "../../entities/clients";
+import { Diagram } from "../../entities/diagrams";
 
-export const columns: TableColumnsType<Client> = [
+export const columns: TableColumnsType<Diagram> = [
   {
     title: 'Наименование диаграммы',
     dataIndex: 'name',

@@ -10,16 +10,15 @@ import { columns } from './colums';
 export function Diagrams() {
   const navigate = useNavigate();
   const {
-    clients: { clients },
+    diagrams: { diagrams },
   } = useStores();
   const [selected, setSelected] = useState<Key[]>([]);
 
   useEffect(() => {
     setSelected([]);
-  }, [clients]);
+  }, [diagrams]);
 
   const onChangeTable = (selectedRowKeys: React.Key[]) => {
-    console.log('fpfpf');
     setSelected(selectedRowKeys);
   };
 
@@ -30,8 +29,8 @@ export function Diagrams() {
       <div className={css.wrapper}>
         <DeleteDiagrams selected={selected} />
 
-        <Link to="addClient" className="button">
-          Добавить клиента
+        <Link to="addDiagram" className="button">
+          Добавить диаграмму
         </Link>
       </div>
 
@@ -44,12 +43,12 @@ export function Diagrams() {
         onRow={(record) => {
           return {
             onClick: () => {
-              navigate(`changeClient/${record.key}`);
+              navigate(`changeDiagram/${record.key}`);
             },
           };
         }}
         columns={columns}
-        dataSource={clients}
+        dataSource={diagrams}
       />
     </div>
   );
