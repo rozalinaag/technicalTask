@@ -1,4 +1,4 @@
-import { initialEdges } from './initialEdges';
+import { initialEdges } from "./initialEdges";
 
 export const initialDiagrams = [
   {
@@ -30,11 +30,7 @@ export const initialDiagrams = [
         data: { label: 'Поток 4' },
       },
     ],
-    edges: [
-      { id: 'e1-2', source: '1', target: '2', type: 'straight' },
-      { id: 'e2-3', source: '2', target: '3', type: 'straight' },
-      { id: 'e3-4', source: '3', target: '4', type: 'straight' },
-    ],
+    edges: initialEdges
   },
   {
     key: '2',
@@ -65,11 +61,7 @@ export const initialDiagrams = [
         data: { label: 'Класс 4' },
       },
     ],
-    edges: [
-      { id: 'e1-2', source: '1', target: '2', type: 'straight' },
-      { id: 'e2-3', source: '2', target: '3', type: 'straight' },
-      { id: 'e3-4', source: '3', target: '4', type: 'straight' },
-    ],
+    edges: initialEdges
   },
   {
     key: '3',
@@ -100,10 +92,6 @@ export const initialDiagrams = [
         data: { label: 'Клиент 4' },
       },
     ],
-    edges: [
-      { id: 'e1-2', source: '1', target: '2' },
-      { id: 'e2-3', source: '2', target: '3'},
-      { id: 'e3-4', source: '3', target: '4' },
-    ],
+    edges: initialEdges
   },
 ];

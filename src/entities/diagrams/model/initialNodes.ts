@@ -22,5 +22,5 @@ export const initialNodes = [
     position: { x: 400, y: 400 },
     type: 'node-with-toolbar',
     data: { label: 'Block 4' },
-  },
+  }
 ];

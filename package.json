@@ -19,6 +19,7 @@
     "mobx-utils": "^6.0.8",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
+    "react-flow-renderer": "^8.8.0",
     "react-hook-form": "^7.51.3",
     "react-router-dom": "^6.22.3",
     "reactflow": "^11.11.1",
