@@ -5,13 +5,13 @@ import css from './ModalYouSureDelete.module.css';
 type Props = {
   isModalOpen: boolean;
   setIsModalOpen: (option: boolean) => void;
-  setDeleteClients: (option: boolean) => void;
+  setDeleteItems: (option: boolean) => void;
 };
 
 export function ModalYouSureDelete({
   isModalOpen,
   setIsModalOpen,
-  setDeleteClients,
+  setDeleteItems,
 }: Props) {
   return (
     <Modal
@@ -22,7 +22,7 @@ export function ModalYouSureDelete({
       okText={'Ок'}
       onOk={() => {
         setIsModalOpen(false);
-        setDeleteClients(true);
+        setDeleteItems(true);
       }}
       onCancel={() => {
         setIsModalOpen(false);

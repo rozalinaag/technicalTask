@@ -6,8 +6,9 @@ import { useStores } from '../../shared/hooks/useStores';
 import { Key, useEffect, useState } from 'react';
 import { DeleteDiagrams } from './DeleteDiagrams/DeleteDiagrams';
 import { columns } from './colums';
+import { observer } from 'mobx-react-lite';
 
-export function Diagrams() {
+export const Diagrams = observer(() => {
   const navigate = useNavigate();
   const {
     diagrams: { diagrams },
@@ -17,6 +18,8 @@ export function Diagrams() {
   useEffect(() => {
     setSelected([]);
   }, [diagrams]);
+
+  console.log(selected);
 
   const onChangeTable = (selectedRowKeys: React.Key[]) => {
     setSelected(selectedRowKeys);
@@ -52,4 +55,4 @@ export function Diagrams() {
       />
     </div>
   );
-}
+});

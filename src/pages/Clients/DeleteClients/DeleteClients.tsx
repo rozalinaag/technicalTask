@@ -1,4 +1,3 @@
-import { Button, Modal } from 'antd';
 import css from './DeleteClients.module.css';
 import { useStores } from '../../../shared/hooks/useStores';
 import { useEffect, useState } from 'react';
@@ -35,7 +34,7 @@ export function DeleteClients({ selected }: Props) {
 
       <ModalYouSureDelete
         isModalOpen={isModalOpen}
-        setDeleteClients={setDeleteClients}
+        setDeleteItems={setDeleteClients}
         setIsModalOpen={setIsModalOpen}
       />
 

@@ -13,20 +13,20 @@ type Props = {
 
 export function DeleteDiagrams({ selected }: Props) {
   const {
-    clients: { deleteClientsAction },
+    diagrams: { deleteDiagramsAction },
   } = useStores();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [deleteClients, setDeleteClients] = useState(false);
+  const [deleteItems, setDeleteItems] = useState(false);
   const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
 
   useEffect(() => {
-    if (deleteClients) {
-      deleteClientsAction(selected);
-      setDeleteClients(false);
+    if (deleteItems) {
+      deleteDiagramsAction(selected);
+      setDeleteItems(false);
       setIsSuccessModalOpen(true);
     }
-  }, [deleteClients]);
+  }, [deleteItems]);
 
   return (
     <div className={css.wrapper}>
@@ -34,7 +34,7 @@ export function DeleteDiagrams({ selected }: Props) {
 
       <ModalYouSureDelete
         isModalOpen={isModalOpen}
-        setDeleteClients={setDeleteClients}
+        setDeleteItems={setDeleteItems}
         setIsModalOpen={setIsModalOpen}
       />
 

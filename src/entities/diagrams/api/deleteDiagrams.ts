@@ -1,5 +1,5 @@
-import { Client } from "../model/types";
+import { Diagram } from "../model/types";
 
-export function deleteDiagrams(keys: React.Key[], clients: Client[]): Client[] {
-  return clients.filter(item => !keys.includes(item.key))
+export function deleteDiagrams(keys: React.Key[], diagrams: Diagram[]): Diagram[] {
+  return diagrams.filter(item => !keys.includes(item.key))
 }
