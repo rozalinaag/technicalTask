@@ -8,21 +8,22 @@ type Props = {
   data: {
     label: string;
     onChangeEdit: (value: string, id: string) => void;
+    onAddNewNode: (label: string, id: string) => void;
   };
   isConnectable: boolean;
 };
 
 export function NodeWithToolbar({ data, isConnectable }: Props) {
   const refDiv = useRef<HTMLInputElement>(null);
-  const [labelNode, setLabelNode] = useState(data.label);
   const [isModalEdit, setIsModalEdit] = useState(false);
-  const [newLabel, setNewLabel] = useState(labelNode);
+  const [isModalPlus, setIsModalPlus] = useState(false);
+  const [newLabel, setNewLabel] = useState(data.label);
 
   return (
     <div ref={refDiv}>
       <NodeToolbar isVisible={true} position={Position.Bottom}>
         <Button icon={<EditOutlined />} onClick={() => setIsModalEdit(true)} />
-        <Button icon={<PlusOutlined />} />
+        <Button icon={<PlusOutlined />} onClick={() => setIsModalPlus(true)} />
         <Button icon={<DeleteOutlined />} />
       </NodeToolbar>
 
@@ -42,13 +43,12 @@ export function NodeWithToolbar({ data, isConnectable }: Props) {
       />
 
       <Modal
-        title="Изменение узла"
+        title="Наименование блока"
         open={isModalEdit}
         cancelText={'Отмена'}
         centered
         okText={'Ок'}
         onOk={() => {
-          setLabelNode('');
           data.onChangeEdit(
             newLabel,
             refDiv
@@ -59,6 +59,33 @@ export function NodeWithToolbar({ data, isConnectable }: Props) {
         }}
         onCancel={() => {
           setIsModalEdit(false);
+        }}
+      >
+        <Input
+          value={newLabel}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            setNewLabel(e.target.value)
+          }
+        />
+      </Modal>
+
+      <Modal
+        title="Добавление блока"
+        open={isModalPlus}
+        cancelText={'Отмена'}
+        centered
+        okText={'Ок'}
+        onOk={() => {
+          data.onAddNewNode(
+            newLabel,
+            refDiv
+              .current!.getElementsByClassName('react-flow__handle')[0]
+              .getAttribute('data-nodeid') || ''
+          );
+          setIsModalPlus(false);
+        }}
+        onCancel={() => {
+          setIsModalPlus(false);
         }}
       >
         <Input

@@ -4,13 +4,12 @@ import ReactFlow, {
   Connection,
   Controls,
   Edge,
-  EdgeChange,
   MiniMap,
-  NodeChange,
   addEdge,
   useEdgesState,
   useNodesState,
   BackgroundVariant,
+  useReactFlow,
 } from 'reactflow';
 import { NodeWithToolbar, initialEdges, initialNodes } from '../..';
 import { PropsDiagram } from './types';
@@ -22,6 +21,7 @@ const nodeTypes = {
 export function FlowDiagram({ nodesDiagram, edgesDiagram }: PropsDiagram) {
   const [nodes, setNodes] = useNodesState(nodesDiagram || initialNodes);
   const [edges, setEdges] = useEdgesState(edgesDiagram || initialEdges);
+  const { screenToFlowPosition } = useReactFlow();
 
   const onChangeEdit = (value: string, id: string) => {
     setNodes((nds) => {
@@ -43,28 +43,94 @@ export function FlowDiagram({ nodesDiagram, edgesDiagram }: PropsDiagram) {
     });
   };
 
+  const onAddNewNode = (label: string, id: string) => {
+    const newId = Number(id) + 1;
+
+    let newNodes = [];
+
+    for (let i = 0; i < nodes.length; i++) {
+      if (Number(nodes[i].id) <= Number(id)) {
+        newNodes.push(nodes[i]);
+      } else if (Number(nodes[i].id) === newId) {
+        newNodes.push({
+          id: newId.toString(),
+          type: nodes[i - 1].type,
+          position: screenToFlowPosition({
+            x: nodes[i - 1].position.x,
+            y: nodes[i - 1].position.y + 100,
+          }),
+          data: {
+            label: label,
+            onChangeEdit: onChangeEdit,
+            onAddNewNode: onAddNewNode,
+          },
+        });
+
+        newNodes.push({
+          ...nodes[i],
+          id: (Number(nodes[i].id) + 1).toString(),
+          position: screenToFlowPosition({
+            x: nodes[i].position.x,
+            y: nodes[i].position.y + 100,
+          }),
+        });
+      } else {
+        newNodes.push({
+          ...nodes[i],
+          id: (Number(nodes[i].id) + 1).toString(),
+          position: {
+            x: nodes[i].position.x,
+            y: nodes[i].position.y + 100,
+          },
+        });
+      }
+    }
+
+    const last = nodes[nodes.length - 1];
+
+    if (newId > Number(last.id)) {
+      newNodes.push({
+        id: newId.toString(),
+        type: last.type,
+        position: screenToFlowPosition({
+          x: last.position.x,
+          y: last.position.y + 100,
+        }),
+        data: {
+          label: label,
+          onChangeEdit: onChangeEdit,
+          onAddNewNode: onAddNewNode,
+        },
+      });
+    }
+
+    setNodes(newNodes);
+
+    const endId = Number(last.id) + 1;
+    setEdges((edges) => {
+      return [
+        ...edges,
+        {
+          id: `e${last.id}-${endId}`,
+          source: `${last.id}`,
+          target: `${endId}`,
+        },
+      ];
+    });
+  };
+
   useEffect(() => {
     setNodes(
       nodes.map((item) => ({
         ...item,
-        data: { label: item.data.label, onChangeEdit: onChangeEdit },
+        data: {
+          label: item.data.label,
+          onChangeEdit: onChangeEdit,
+          onAddNewNode: onAddNewNode,
+        },
       }))
     );
   }, []);
-
-  const onNodesChange = useCallback(
-    (changes: NodeChange[]) => {
-      // setNodes((nds) => applyNodeChanges(changes, nds)),
-    },
-    [setNodes]
-  );
-
-  const onEdgesChange = useCallback(
-    (changes: EdgeChange[]) => {
-      // setEdges((eds) => applyEdgeChanges(changes, eds)),
-    },
-    [setEdges]
-  );
 
   const onConnect = useCallback(
     (connection: Edge | Connection) =>
@@ -77,8 +143,6 @@ export function FlowDiagram({ nodesDiagram, edgesDiagram }: PropsDiagram) {
       nodes={nodes}
       edges={edges}
       nodeTypes={nodeTypes}
-      onNodesChange={onNodesChange}
-      onEdgesChange={onEdgesChange}
       onConnect={onConnect}
     >
       <Controls showInteractive={false} />
