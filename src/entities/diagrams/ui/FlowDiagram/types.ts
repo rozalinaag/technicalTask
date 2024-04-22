@@ -9,6 +9,7 @@ export type PropsDiagram = {
       label: string;
       onChangeEdit?: (value: string, id: string) => void;
       onAddNewNode?: (label: string, id: string) => void
+      onDeleteNode?: (id: string) => void;
     };
   }[];
   edgesDiagram?: {

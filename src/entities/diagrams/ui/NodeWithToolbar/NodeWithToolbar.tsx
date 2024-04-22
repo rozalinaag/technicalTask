@@ -9,6 +9,7 @@ type Props = {
     label: string;
     onChangeEdit: (value: string, id: string) => void;
     onAddNewNode: (label: string, id: string) => void;
+    onDeleteNode: (id: string) => void;
   };
   isConnectable: boolean;
 };
@@ -24,7 +25,19 @@ export function NodeWithToolbar({ data, isConnectable }: Props) {
       <NodeToolbar isVisible={true} position={Position.Bottom}>
         <Button icon={<EditOutlined />} onClick={() => setIsModalEdit(true)} />
         <Button icon={<PlusOutlined />} onClick={() => setIsModalPlus(true)} />
-        <Button icon={<DeleteOutlined />} />
+        <Button
+          icon={
+            <DeleteOutlined
+              onClick={() =>
+                data.onDeleteNode(
+                  refDiv
+                    .current!.getElementsByClassName('react-flow__handle')[0]
+                    .getAttribute('data-nodeid') || ''
+                )
+              }
+            />
+          }
+        />
       </NodeToolbar>
 
       <div className="react-flow__node-default">{data?.label}</div>

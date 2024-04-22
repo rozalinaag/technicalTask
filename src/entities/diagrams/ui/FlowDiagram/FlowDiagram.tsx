@@ -63,6 +63,7 @@ export function FlowDiagram({ nodesDiagram, edgesDiagram }: PropsDiagram) {
             label: label,
             onChangeEdit: onChangeEdit,
             onAddNewNode: onAddNewNode,
+            onDeleteNode: onDeleteNode,
           },
         });
 
@@ -119,6 +120,12 @@ export function FlowDiagram({ nodesDiagram, edgesDiagram }: PropsDiagram) {
     });
   };
 
+  const onDeleteNode = (id: string) => {
+    setNodes((nds) => {
+      return nds.filter((item) => Number(item.id) < Number(id));
+    });
+  };
+
   useEffect(() => {
     setNodes(
       nodes.map((item) => ({
@@ -127,6 +134,7 @@ export function FlowDiagram({ nodesDiagram, edgesDiagram }: PropsDiagram) {
           label: item.data.label,
           onChangeEdit: onChangeEdit,
           onAddNewNode: onAddNewNode,
+          onDeleteNode: onDeleteNode,
         },
       }))
     );
