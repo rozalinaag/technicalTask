@@ -23,48 +23,33 @@ export function FlowDiagram({ nodesDiagram, edgesDiagram }: PropsDiagram) {
   const [nodes, setNodes] = useNodesState(nodesDiagram || initialNodes);
   const [edges, setEdges] = useEdgesState(edgesDiagram || initialEdges);
 
-  useEffect(() => {
-    const onChange = (event: { target: { value: any } }) => {
-      setNodes((nds) =>
-        nds.map((node) => {
-          const color = event.target.value;
-
+  const onChangeEdit = (value: string, id: string) => {
+    setNodes((nds) => {
+      return nds.map((node) => {
+        if (node.id === id) {
           return {
             ...node,
             data: {
               ...node.data,
+              label: value,
             },
           };
-        })
-      );
-    };
+        } else {
+          return {
+            ...node,
+          };
+        }
+      });
+    });
+  };
 
-    setNodes([
-      {
-        id: '1',
-        position: { x: 400, y: 100 },
-        type: 'node-with-toolbar',
-        data: { label: 'Block 1', onChange: onChange },
-      },
-      {
-        id: '2',
-        position: { x: 400, y: 200 },
-        type: 'node-with-toolbar',
-        data: { label: 'Block 2', onChange: onChange  },
-      },
-      {
-        id: '3',
-        position: { x: 400, y: 300 },
-        type: 'node-with-toolbar',
-        data: { label: 'Block 3', onChange: onChange  },
-      },
-      {
-        id: '4',
-        position: { x: 400, y: 400 },
-        type: 'node-with-toolbar',
-        data: { label: 'Block 4', , onChange: onChange },
-      },
-    ]);
+  useEffect(() => {
+    setNodes(
+      nodes.map((item) => ({
+        ...item,
+        data: { label: item.data.label, onChangeEdit: onChangeEdit },
+      }))
+    );
   }, []);
 
   const onNodesChange = useCallback(

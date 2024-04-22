@@ -7,6 +7,7 @@ export type PropsDiagram = {
     };
     data: {
       label: string;
+      onChangeEdit?: (value: string, id: string) => void;
     };
   }[];
   edgesDiagram?: {

@@ -9,13 +9,13 @@ export const initialNodes = [
     id: '2',
     position: { x: 400, y: 200 },
     type: 'node-with-toolbar',
-    data: { label: 'Block 2' },
+    data: { label: 'Block 2'},
   },
   {
     id: '3',
     position: { x: 400, y: 300 },
     type: 'node-with-toolbar',
-    data: { label: 'Block 3' },
+    data: { label: 'Block 3'},
   },
   {
     id: '4',
