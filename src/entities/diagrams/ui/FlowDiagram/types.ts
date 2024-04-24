@@ -1,20 +1,8 @@
+import { Edges, Nodes } from "../..";
+
 export type PropsDiagram = {
-  nodesDiagram?: {
-    id: string;
-    position: {
-      x: number;
-      y: number;
-    };
-    data: {
-      label: string;
-      onChangeEdit?: (value: string, id: string) => void;
-      onAddNewNode?: (label: string, id: string) => void
-      onDeleteNode?: (id: string) => void;
-    };
-  }[];
-  edgesDiagram?: {
-    id: string;
-    source: string;
-    target: string;
-  }[];
+  nodesDiagram?: Nodes[];
+  edgesDiagram?: Edges[];
+  setNodesDiagram: (value: Nodes[]) => void;
+  setEdgesDiagram: (value: Edges[]) => void;
 };

@@ -11,16 +11,21 @@ import ReactFlow, {
   BackgroundVariant,
   useReactFlow,
 } from 'reactflow';
-import { NodeWithToolbar, initialEdges, initialNodes } from '../..';
+import { NodeWithToolbar } from '../..';
 import { PropsDiagram } from './types';
 
 const nodeTypes = {
   'node-with-toolbar': NodeWithToolbar,
 };
 
-export function FlowDiagram({ nodesDiagram, edgesDiagram }: PropsDiagram) {
-  const [nodes, setNodes] = useNodesState(nodesDiagram || initialNodes);
-  const [edges, setEdges] = useEdgesState(edgesDiagram || initialEdges);
+export function FlowDiagram({
+  nodesDiagram,
+  edgesDiagram,
+  setNodesDiagram,
+  setEdgesDiagram,
+}: PropsDiagram) {
+  const [nodes, setNodes] = useNodesState(nodesDiagram!);
+  const [edges, setEdges] = useEdgesState(edgesDiagram!);
   const { screenToFlowPosition } = useReactFlow();
 
   const onChangeEdit = (value: string, id: string) => {
@@ -45,6 +50,10 @@ export function FlowDiagram({ nodesDiagram, edgesDiagram }: PropsDiagram) {
 
   const onAddNewNode = (label: string, id: string) => {
     const newId = Number(id) + 1;
+
+    if (nodes[nodes.length - 1].id === newId.toString()) {
+      console.log('fed');
+    }
 
     let newNodes = [];
 
@@ -105,7 +114,17 @@ export function FlowDiagram({ nodesDiagram, edgesDiagram }: PropsDiagram) {
       });
     }
 
-    setNodes(newNodes);
+    setNodes(
+      newNodes.map((item) => ({
+        ...item,
+        data: {
+          label: item.data.label,
+          onChangeEdit: onChangeEdit,
+          onAddNewNode: onAddNewNode,
+          onDeleteNode: onDeleteNode,
+        },
+      }))
+    );
 
     const endId = Number(last.id) + 1;
     setEdges((edges) => {
@@ -125,6 +144,11 @@ export function FlowDiagram({ nodesDiagram, edgesDiagram }: PropsDiagram) {
       return nds.filter((item) => Number(item.id) < Number(id));
     });
   };
+
+  useEffect(() => {
+    setEdgesDiagram(edges);
+    setNodesDiagram(nodes);
+  }, [nodes, edges]);
 
   useEffect(() => {
     setNodes(

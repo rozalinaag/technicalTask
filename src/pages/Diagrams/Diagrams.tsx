@@ -19,8 +19,6 @@ export const Diagrams = observer(() => {
     setSelected([]);
   }, [diagrams]);
 
-  console.log(selected);
-
   const onChangeTable = (selectedRowKeys: React.Key[]) => {
     setSelected(selectedRowKeys);
   };
