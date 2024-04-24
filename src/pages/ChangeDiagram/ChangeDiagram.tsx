@@ -1,7 +1,6 @@
 import { Link, useParams } from 'react-router-dom';
 import { BreadCrumbs } from '../../shared/ui';
 import { useStores } from '../../shared/hooks/useStores';
-import css from './ChangeDiagram.module.css';
 import { FormDiagram } from '../../entities/diagrams';
 
 export function ChangeDiagram() {

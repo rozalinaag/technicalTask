@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { v4 as uuIdv4 } from 'uuid';
 import { Input } from 'antd';
 import { FlowDiagram } from '../FlowDiagram/FlowDiagram';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { initialEdges, initialNodes } from '../..';
 
 type Props = {
