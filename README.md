@@ -1,5 +1,5 @@
 # technicalTask
-Company Bisness Cifra
+Business Number
 
 # Deploy in vercel: 
 https://technical-task-c7tp29bdb-rozalinaags-projects.vercel.app/
